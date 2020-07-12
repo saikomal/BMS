@@ -20,15 +20,15 @@ export class GlobalhttpService {
 
    }
    /*Method to get data*/
-   getData(data:any):Observable<any>{
+   getData(data:any,apiname:string):Observable<any>{
      let options=data;
     return this.http.get(this.API+apiname,JSON.stringify(options)).pipe(tap(res=>res));
 
    }
-   updateData(data:any):Observable<any>{
+   updateData(data:any,apiname:string):Observable<any>{
 
    }
-   deleteData(data:any):Observable<any>{
+   deleteData(data:any,apiname:string):Observable<any>{
 
    }
 }
