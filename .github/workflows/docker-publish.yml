@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: bmsfile
+      - name: bmsflask
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
       - name: Log into registry
