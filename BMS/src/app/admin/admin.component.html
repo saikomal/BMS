@@ -1,0 +1,6 @@
+<form style="margin-top:100px;">
+<input type="text" />
+<br>
+<input type="file" accept="image/*" (change)="execute($event)"/>
+<p style="color:red;" *ngIf="moresize">Image size is greater than 5MB</p>
+</form>
