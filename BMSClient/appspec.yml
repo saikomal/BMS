@@ -5,4 +5,4 @@ files:
     destination: /vamsi
 hooks:
   AfterInstall:
-    - location: installation.sh
+    - location: /flask_output/installation.sh
