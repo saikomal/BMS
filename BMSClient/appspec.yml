@@ -5,4 +5,6 @@ files:
     destination: /vamsi
 hooks:
   AfterInstall:
-    - location: /flask_output/installation.sh
+    - location: /src/installation.sh
+      timeout: 3600
+      
