@@ -5,7 +5,7 @@ files:
     destination: /vamsi
 hooks:
   BeforeInstall:
-    - location: /terminate/delete.sh
+    - location: /pipeline_scripts/delete.sh
   AfterInstall:
     - location: /pipeline_scripts/installation.sh
       timeout: 3600
