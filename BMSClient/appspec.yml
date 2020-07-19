@@ -4,10 +4,12 @@ files:
   - source: /
     destination: /vamsi
 hooks:
+  BeforeInstall:
+    - location: /terminate/delete.sh
   AfterInstall:
-    - location: /src/installation.sh
+    - location: /pipeline_scripts/installation.sh
       timeout: 3600
   ApplicationStart:
-    - location: /src/run.sh
+    - location: /pipeline_scripts/run.sh
       timeout: 3600
       

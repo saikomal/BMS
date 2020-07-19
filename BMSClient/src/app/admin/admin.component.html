@@ -7,7 +7,7 @@
 <form [formGroup]="PostDetails" style="margin-top:100px;" >
 <input type="text" formControlName="c_name"/>
 <br>
-<input type="file" accept="image/*" (change)="execute($event)" formControlName="c_logo"/>
+<input type="file"  (change)="execute($event)" />
 <p style="color:red;" *ngIf="moresize">Image size is greater than 5MB</p>
  <textarea formControlName="c_description"></textarea>
  <button (click)="postdata()" *ngIf="!moresize">Submit</button>

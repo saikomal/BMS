@@ -28,22 +28,25 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.PostDetails=this._formBuilder.group({
       c_name:["",[Validators.required]],
-      c_logo:[null,[Validators.required]],
+      c_logo:["",[Validators.required]],
       c_description:["",[Validators.required]]
     })
   }
   execute(data:any){
     console.log(data.target.files[0]);
+    const file=data.target.files[0];
     
     console.log(data.target.files[0].size);
     console.log(data.target.files[0].type);
     if(data.target.files[0].size<5242880 ){
 
-
+/*
       this.PostDetails.patchValue({
         c_logo:data.target.files[0]
       });
       this.PostDetails.get('c_logo').updateValueAndValidity();
+      */
+     this.PostDetails.get('c_logo').setValue(file);
 /*
     var reader = new FileReader();      
     reader.readAsDataURL(data.target.files[0]); 
@@ -61,7 +64,7 @@ export class AdminComponent implements OnInit {
       formData.append("companylogo",this.PostDetails.get('c_logo').value);
       formData.append("description",this.PostDetails.get('c_description').value);
       console.log(formData);
-      this.globalhttp.postData(formData,"/company").subscribe((data:any)=>{
+      this.globalhttp.postData(formData,"company").subscribe((data:any)=>{
         console.log(data);
       })
       
