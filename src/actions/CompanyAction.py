@@ -1,10 +1,17 @@
-from src.Configurations.MongoClient import bmsdb, fs, companyDB
+from src.Configurations.MongoClient import bmsdb, fs
 from flask import Blueprint, request
 from src.utils.UsualUtil import send_response
-
+from src.Configurations.Companytable import CompanyTable
 company = Blueprint('company', __name__, url_prefix="/company")
 
-companycollec = bmsdb[companyDB]
+companycollec = bmsdb[CompanyTable.collec_name]
+
+GET_COMPANY_OPERATION = "GET COMPANY DETAILS"
+ADD_COMPANY_OPERATION = "ADD COMPANY DETAILS"
+DELETE_COMPANY_OPERATION = "DELETE COMPANY DETAILS"
+COMPANY_NAME_CHANGED = "COMPANY_NAME_CHANGED"
+COMPANY_DESC_CHANGED = "COMPANY_NAME_CHANGED"
+COMPANY_LOGO_CHANGED = "COMPANY LOGO CHANGED"
 
 
 @company.route('', methods=['GET'])
@@ -12,7 +19,7 @@ def get_company_details():
     details = companycollec.find_one()
     if details is None:
         return send_response(True, msg="No Company available to get")
-    details['logo'] = str(details['logo'])
+    details[CompanyTable.logo] = str(details[CompanyTable.logo])
     del details['_id']
     return send_response(True, data=details)
 
@@ -30,7 +37,7 @@ def add_company_details():
             logo = request.files.get('companylogo')
             logo_id = fs.put(logo)
         description = request.form.get('description', "")
-        data = {'companyname': companyname, 'logo': logo_id, 'description': description}
+        data = {CompanyTable.company_name: companyname, CompanyTable.logo: logo_id, CompanyTable.desc: description}
         companycollec.insert_one(data)
         return send_response(True, msg="Data entered"), 200
     except Exception as e:
@@ -46,9 +53,9 @@ def update_company_details():
         data = request.form.to_dict()
         if 'companylogo' in request.files:
             logo = request.files.get('companylogo')
-            fs.delete(details['logo'])
+            fs.delete(details[CompanyTable.logo])
             logo_id = fs.put(logo)
-            data['logo'] = logo_id
+            data[CompanyTable.logo] = logo_id
         newvalues = {"$set": data}
         companycollec.update_one(details, newvalues)
         return send_response(True, msg="Data updated"), 200
