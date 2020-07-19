@@ -1,6 +1,6 @@
-class CategoryTable:
+class AuditTable:
     collec_name = "Audits"
-    performed_on = "PerformedOn"
     performed_by = "PerformedBy"
     operation = "Operation"
     time = "time"
+    reason = "reason"

@@ -7,7 +7,9 @@ from src.utils.CustomerUtil import get_specified_customer_details
 customer = Blueprint('customer', __name__, url_prefix="/customer")
 
 custcollec = bmsdb[customerDB]
-#custcollec.createIndex( { "custphone": 1 },{unique:true})
+
+
+# custcollec.createIndex( { "custphone": 1 },{unique:true})
 @customer.route('', methods=['GET'])
 def get_customer_details():
     details = list(custcollec.find())
@@ -15,10 +17,11 @@ def get_customer_details():
         return send_response(True, msg="No customer available to get")
     return send_response(True, data=details)
 
+
 @customer.route('/get_requested_customer_details', methods=['GET'])
 def get_requested_customer_details():
     custph = request.form.get('custphone')
-    if get_specified_customer_details(custph).count()==0:
+    if get_specified_customer_details(custph).count() == 0:
         return send_response(True, msg="No requested customer available to get")
     return send_response(True, data=list(get_specified_customer_details(custph)))
 
@@ -43,21 +46,22 @@ def delete_customer_details():
     custph = request.form.get('custphone')
     if not user_exists(custph):
         return send_response(True, msg="No given customer avaliable to delete"), 200
-    details={"_id" : custph}
+    details = {"_id": custph}
     custcollec.delete_one(details)
     return send_response(True, msg="customer deleted"), 200
+
 
 @customer.route('', methods=['POST'])
 def add_customer_details():
     try:
-        custname=request.form.get('customername')
-        custadd=request.form.get('customeradd')
-        custph=request.form.get('custphone')
-        comments=request.form.get('comments')
-        points=request.form.get('points')
+        custname = request.form.get('customername')
+        custadd = request.form.get('customeradd')
+        custph = request.form.get('custphone')
+        comments = request.form.get('comments')
+        points = request.form.get('points')
         data = {'customername': custname, 'customeradd': custadd, '_id': custph, 'comments': comments, 'points': points}
         print(custph)
-        if(custph == None):
+        if (custph == None):
             return send_response(True, msg="phoneno must be given"), 200
         if user_exists(custph):
             return send_response(True, msg="Given customer already exists"), 200
@@ -65,4 +69,3 @@ def add_customer_details():
         return send_response(True, msg="Data entered"), 200
     except Exception as e:
         return send_response(False, msg="failed due to sdfdsome error, Try again if you are patient"),
-

@@ -8,6 +8,9 @@ def category_exists(category_name):
 
 
 def valid_parent(category_name, parent_id):
+    """
+    Check if the parentId is not one the category children to prevent cycle
+    """
     pipeline = [{"$addFields": {"id": {"$toString": "$_id"}}}, {"$graphLookup": {
         'from': 'Category',
         'startWith': "$id",
