@@ -1,20 +1,25 @@
-from src.Configurations.MongoClient import bmsdb, fs, customerDB
+from src.Configurations.MongoClient import bmsdb, fs
 from flask import Blueprint, request
 from src.utils.UsualUtil import send_response
 from src.utils.CustomerUtil import user_exists
+from src.utils.AuditUtil import audit
+from src.Configurations.CustomerTable import CustomerTable
 from src.utils.CustomerUtil import get_specified_customer_details
 
 customer = Blueprint('customer', __name__, url_prefix="/customer")
 
-custcollec = bmsdb[customerDB]
+custcollec = bmsdb[CustomerTable.collecname]
 
 
 # custcollec.createIndex( { "custphone": 1 },{unique:true})
 @customer.route('', methods=['GET'])
 def get_customer_details():
-    details = list(custcollec.find())
-    if details is None:
-        return send_response(True, msg="No customer available to get")
+    #details = list(custcollec.find())
+    sin = request.form.get("sin")
+    no_of_rows = request.form.get("no_of_rows")
+    details = list(custcollec.find().skip(int(sin)).limit(int(no_of_rows)))
+    if len(details)==0:
+        return send_response(True, msg="No customer available to get"), 200
     return send_response(True, data=details)
 
 
@@ -68,4 +73,4 @@ def add_customer_details():
         custcollec.insert_one(data)
         return send_response(True, msg="Data entered"), 200
     except Exception as e:
-        return send_response(False, msg="failed due to sdfdsome error, Try again if you are patient"),
+        return send_response(False, msg="failed due to sdfdsome error, Try again if you are patient"), 500

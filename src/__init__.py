@@ -1,6 +1,7 @@
 from flask import Flask, send_file
 from .actions.CompanyAction import company
 from .actions.CategoryAction import category
+from .actions.CustomerAction import customer
 from src.Configurations.MongoClient import bmsdb, fs
 from bson.objectid import ObjectId
 from src.utils.UsualUtil import send_response
@@ -8,6 +9,7 @@ from src.utils.UsualUtil import send_response
 app = Flask(__name__)
 app.register_blueprint(company)
 app.register_blueprint(category)
+app.register_blueprint(customer)
 
 
 @app.route("/image/<imageid>", methods=["GET"])
