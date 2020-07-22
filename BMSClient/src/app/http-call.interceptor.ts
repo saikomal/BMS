@@ -18,7 +18,7 @@ export class HttpCallInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     request=request.clone({
       headers: new HttpHeaders({
-        "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
         'Access-Control-Allow-Origin':'*'
       }),
     });
