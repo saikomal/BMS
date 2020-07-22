@@ -18,9 +18,9 @@ def get_customer_details():
     sin = request.form.get("sin")
     no_of_rows = request.form.get("no_of_rows")
     if int(sin)<0:
-        return send_response(True, msg="enter a valid start index"), 200
+        sin=0
     if int(no_of_rows)<=0:
-        return send_response(True, msg="enter a valid no_of_rows"), 200
+        no_of_rows=0
     details = list(custcollec.find().skip(int(sin)).limit(int(no_of_rows)))
     if len(details)==0:
         return send_response(True, msg="No customer available to get"), 200
