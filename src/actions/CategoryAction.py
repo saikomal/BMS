@@ -1,7 +1,8 @@
 from flask import Blueprint, request
 from src.Configurations.MongoClient import bmsdb
 from src.Configurations.CategoryTable import CategoryTable
-from src.utils.CategoryUtil import category_exists, valid_cat_id, valid_parent_for_category
+from src.utils.CategoryUtil import category_exists, valid_cat_id, valid_parent_for_category, get_all_children, \
+    get_all_children_ids
 from src.utils.UsualUtil import send_response
 from src.utils.CompanyUtil import company_exists
 import json
@@ -24,7 +25,7 @@ def create_category():
         if parent_cat_id != "" and not valid_cat_id(parent_cat_id):
             pass
         cat_name = request.form.get("category_name", "")
-        if valid_cat_id(parent_cat_id):
+        if not valid_cat_id(parent_cat_id):
             return send_response(False, "Invalid parent Id")
         if cat_name == "":
             return send_response(False, "Category name is needed"), 500
@@ -53,17 +54,7 @@ def get_categories():
 @category.route('/nested', methods=["GET"])
 def get_nested_categories():
     try:
-        pipeline = [{"$addFields": {"id": {"$toString": "$_id"}}}, {"$graphLookup": {
-            'from': 'Category',
-            'startWith': "$id",
-            'connectFromField': 'id',
-            'connectToField': 'Parent',
-            'as': 'Children',
-            'restrictSearchWithMatch': {}
-        }}]
-        return send_response(True, "Category retrieved Successfully",
-                             json.dumps(list(bmsdb[CategoryTable.collec_name].aggregate(pipeline)),
-                                        default=json_util.default)), 200
+        return send_response(True, "Category retrieved Successfully", get_all_children()[0]), 200
     except Exception as e:
         return send_response(False, "Not interested in processing now"), 500
 
@@ -72,8 +63,6 @@ def get_nested_categories():
 def update_category(cat_id):
     try:
         parent_cat_id = request.form.get("parent_category_id", "")
-        if cat_id == parent_cat_id:
-            return send_response(False, "parent id and cat id cannot be same")
         if parent_cat_id != "" and not valid_cat_id(parent_cat_id):
             pass
         cat_name = request.form.get("category_name", "")
@@ -83,6 +72,8 @@ def update_category(cat_id):
             return send_response(False, "Category name is needed"), 500
         if not valid_cat_id(cat_id):
             return send_response(False, "Category id is invalid or not available to update"), 500
+        if valid_parent_for_category(cat_id, parent_cat_id):
+            return send_response(False, "Parent Id is not a valid one for given catId"), 500
         desc = request.form.get("description", "")
         newvalues = {CategoryTable.category_name: cat_name, CategoryTable.parent_id: parent_cat_id,
                      CategoryTable.desc: desc}
@@ -91,3 +82,12 @@ def update_category(cat_id):
     except Exception as e:
         return send_response(False, "Not interested in processing now"), 500
 
+
+@category.route("/<cat_id>", methods=["DELETE"])
+def delete_category(cat_id):
+    try:
+        _, id = get_all_children(cat_id)
+        x = cat_collec.delete_many({"_id": {"$in": list(map(ObjectId, id))}})
+        return send_response(True, "Category deleted Successfully", data=id), 200
+    except Exception as e:
+        return send_response(False, "Not interested in processing now"), 500
