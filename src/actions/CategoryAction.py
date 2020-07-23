@@ -1,12 +1,10 @@
 from flask import Blueprint, request
 from src.Configurations.MongoClient import bmsdb
 from src.Configurations.CategoryTable import CategoryTable
-from src.utils.CategoryUtil import category_exists, valid_cat_id, valid_parent_for_category, get_all_children, \
-    get_all_children_ids
+from src.utils.CategoryUtil import category_exists, valid_cat_id, valid_parent_for_category, get_all_children
 from src.utils.UsualUtil import send_response
 from src.utils.CompanyUtil import company_exists
-import json
-from bson import json_util, ObjectId
+from bson import ObjectId
 
 category = Blueprint('category', __name__, url_prefix="/category")
 cat_collec = bmsdb[CategoryTable.collec_name]

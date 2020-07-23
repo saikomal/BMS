@@ -7,12 +7,14 @@ from bson.objectid import ObjectId
 from src.utils.UsualUtil import send_response
 from flask_cors import CORS
 from src.utils.UsualUtil import valid_object_id
+from src.actions.PurchaseAction import purchase
 
 app = Flask(__name__)
 CORS(app)
 app.register_blueprint(company)
 app.register_blueprint(category)
 app.register_blueprint(customer)
+app.register_blueprint(purchase)
 
 
 @app.route("/image/<imageid>", methods=["GET"])
