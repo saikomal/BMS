@@ -10,17 +10,13 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
     </expand>
     <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd40a831-ea81-4948-8420-b9bbd3f4174f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/CustomerAction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/CustomerAction.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +32,12 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="master" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_USER" value="saikomal" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="BMS" />
   </component>
   <component name="ProjectId" id="1eUwnkB1bac8IJJZFJWa1wQnABv" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -47,9 +49,11 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
-  <component name="RunManager" selected="Python.MongoClient">
+  <component name="RunManager" selected="Python.AnalyticsUtil">
     <configuration name="Analytics" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BMS" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -62,7 +66,30 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/actions/Analytics.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="AnalyticsUtil" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BMS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/utils/AnalyticsUtil.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -83,6 +110,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/Configurations/MongoClient.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -104,6 +132,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -125,6 +154,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="C:\Users\Sai Komal\Documents\GitHub\BMS\src\__init__.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -135,13 +165,15 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.Unnamed" />
       <item itemvalue="Python.Analytics" />
       <item itemvalue="Python.MongoClient" />
-      <item itemvalue="Python.Unnamed" />
       <item itemvalue="Python.__init__" />
+      <item itemvalue="Python.AnalyticsUtil" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.AnalyticsUtil" />
         <item itemvalue="Python.MongoClient" />
         <item itemvalue="Python.__init__" />
         <item itemvalue="Python.Analytics" />
@@ -158,12 +190,49 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1594389647509</updated>
+      <workItem from="1595408046903" duration="10902000" />
     </task>
+    <task id="LOCAL-00001" summary="Revert &quot;Add check messaged for pagination&quot;&#10;&#10;This reverts commit a0d7eceb">
+      <created>1595341088402</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1595341088402</updated>
+    </task>
+    <task id="LOCAL-00002" summary="small change in pagination checks">
+      <created>1595402923684</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1595402923684</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added phone check for integer&#10;Added total count in get customer details">
+      <created>1595417616970</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1595417616971</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State />
@@ -173,26 +242,54 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add check messaged for pagination" />
+    <MESSAGE value="Add check messages for pagination" />
+    <MESSAGE value="Revert &quot;Add check messaged for pagination&quot;&#10;&#10;This reverts commit a0d7eceb" />
+    <MESSAGE value="small change in pagination checks" />
+    <MESSAGE value="Added phone check for integer&#10;Added total count in get customer details" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added phone check for integer&#10;Added total count in get customer details" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594390083929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1594390083929" />
-    <state width="1493" height="104" key="GridCell.Tab.0.bottom" timestamp="1595156267418">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="258" y="0" key="CommitChangelistDialog2" timestamp="1595417615214">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state x="258" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1595417615214" />
+    <state x="129" y="58" key="DiffContextDialog" timestamp="1595402992977">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="129" y="58" key="DiffContextDialog/0.0.1366.768@0.0.1366.768" timestamp="1595402992977" />
+    <state x="463" y="138" key="FileChooserDialogImpl" timestamp="1595344092918">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="463" y="138" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1595344092918" />
+    <state x="483" y="250" key="Github.CreatePullRequestDialog" timestamp="1595417679583">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="483" y="250" key="Github.CreatePullRequestDialog/0.0.1366.768@0.0.1366.768" timestamp="1595417679583" />
+    <state width="1323" height="192" key="GridCell.Tab.0.bottom" timestamp="1595414659175">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1595414659175" />
     <state width="1493" height="104" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595156267418" />
-    <state width="1493" height="104" key="GridCell.Tab.0.center" timestamp="1595156267418">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1323" height="192" key="GridCell.Tab.0.center" timestamp="1595414659175">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state width="1323" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1595414659175" />
     <state width="1493" height="104" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595156267418" />
-    <state width="1493" height="104" key="GridCell.Tab.0.left" timestamp="1595156267418">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1323" height="192" key="GridCell.Tab.0.left" timestamp="1595414659174">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state width="1323" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1595414659174" />
     <state width="1493" height="104" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595156267418" />
-    <state width="1493" height="104" key="GridCell.Tab.0.right" timestamp="1595156267418">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1323" height="192" key="GridCell.Tab.0.right" timestamp="1595414659175">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state width="1323" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1595414659175" />
     <state width="1493" height="104" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595156267418" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1595155724351">
       <screen x="0" y="0" width="1536" height="824" />
@@ -214,16 +311,44 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="551" y="115" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1595156477201" />
+    <state x="92" y="92" width="1182" height="584" key="ShowDiffWithBranchDialog" timestamp="1595341074139">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="92" y="92" width="1182" height="584" key="ShowDiffWithBranchDialog/0.0.1366.768@0.0.1366.768" timestamp="1595341074139" />
+    <state x="447" y="72" key="VCS.ChangeListViewerDialog" timestamp="1595343840692">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="447" y="72" key="VCS.ChangeListViewerDialog/0.0.1366.768@0.0.1366.768" timestamp="1595343840692" />
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1595417627913">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1595417627913" />
+    <state x="308" y="112" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1595343138407">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="308" y="112" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1366.768@0.0.1366.768" timestamp="1595343138407" />
+    <state x="492" y="297" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1595342293753">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="492" y="297" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.768@0.0.1366.768" timestamp="1595342293753" />
+    <state x="456" y="245" key="git4idea.rebase.GitRebaseDialog" timestamp="1595344015109">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="456" y="245" key="git4idea.rebase.GitRebaseDialog/0.0.1366.768@0.0.1366.768" timestamp="1595344015109" />
+    <state x="446" y="265" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1595343419083">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="446" y="265" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1366.768@0.0.1366.768" timestamp="1595343419083" />
+    <state x="486" y="278" key="git4idea.ui.GitResetDialog" timestamp="1595343842486">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="486" y="278" key="git4idea.ui.GitResetDialog/0.0.1366.768@0.0.1366.768" timestamp="1595343842486" />
+    <state x="433" y="230" key="git4idea.ui.GitUnstashDialog" timestamp="1595343268221">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="433" y="230" key="git4idea.ui.GitUnstashDialog/0.0.1366.768@0.0.1366.768" timestamp="1595343268221" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/Configurations/MongoClient.py</url>
-          <line>9</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/BMS$AnalyticsUtil.coverage" NAME="AnalyticsUtil Coverage Results" MODIFIED="1595411025599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/utils" />
   </component>
 </project>
