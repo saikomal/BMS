@@ -20,11 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd40a831-ea81-4948-8420-b9bbd3f4174f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/CategoryAction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/CategoryAction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/AuditUtil.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/AuditUtil.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/CategoryUtil.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/CategoryUtil.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/UsualUtil.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/UsualUtil.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,9 +135,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Unnamed" />
       <item itemvalue="Python.Analytics" />
       <item itemvalue="Python.MongoClient" />
+      <item itemvalue="Python.Unnamed" />
       <item itemvalue="Python.__init__" />
     </list>
     <recent_temporary>
