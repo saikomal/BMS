@@ -3,6 +3,7 @@ from flask import Blueprint, request
 from src.utils.UsualUtil import send_response
 from src.Configurations.Companytable import CompanyTable
 from src.utils.AuditUtil import audit
+
 company = Blueprint('company', __name__, url_prefix="/company")
 
 companycollec = bmsdb[CompanyTable.collec_name]
@@ -56,7 +57,10 @@ def update_company_details():
         details = companycollec.find_one()
         if details is None:
             return send_response(True, msg="No Company available to update"), 200
-        data = request.form.to_dict()
+        companyname = request.form.get('companyname')
+        if companyname == "":
+            return send_response(False, msg="Don't you need a company name"), 422
+        data = {"companyname": companyname, "description": request.form.get('description', "")}
         if 'companylogo' in request.files:
             audit(operation_type=COMPANY_LOGO_CHANGED, performed_by=ip_addr)
             logo = request.files.get('companylogo')

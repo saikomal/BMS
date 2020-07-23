@@ -1,22 +1,14 @@
 from flask import Blueprint, request
 from src.Configurations.MongoClient import bmsdb
 from src.Configurations.CategoryTable import CategoryTable
-from src.utils.CategoryUtil import category_exists, valid_parent_id, valid_parent_for_category
+from src.utils.CategoryUtil import category_exists, valid_cat_id, valid_parent_for_category
 from src.utils.UsualUtil import send_response
 from src.utils.CompanyUtil import company_exists
 import json
-from bson import ObjectId
-from bson import json_util
+from bson import json_util, ObjectId
 
 category = Blueprint('category', __name__, url_prefix="/category")
 cat_collec = bmsdb[CategoryTable.collec_name]
-
-# Custom encoder to change the ObjectId returned from mongo Query
-# class JSONEncoder(json.JSONEncoder):
-#     def default(self, o):
-#         if isinstance(o, ObjectId):
-#             return str(o)
-#         return json.JSONEncoder.default(self, o)
 
 
 @category.before_request
@@ -29,10 +21,11 @@ def check_if_company_exists():
 def create_category():
     try:
         parent_cat_id = request.form.get("parent_category_id", "")
-        if parent_cat_id != "" and not valid_parent_id(parent_cat_id):
+        if parent_cat_id != "" and not valid_cat_id(parent_cat_id):
             pass
         cat_name = request.form.get("category_name", "")
-        return send_response(False, "Invalid parent Id")
+        if valid_cat_id(parent_cat_id):
+            return send_response(False, "Invalid parent Id")
         if cat_name == "":
             return send_response(False, "Category name is needed"), 500
         desc = request.form.get("description", "")
@@ -73,3 +66,28 @@ def get_nested_categories():
                                         default=json_util.default)), 200
     except Exception as e:
         return send_response(False, "Not interested in processing now"), 500
+
+
+@category.route('/<cat_id>', methods=['PUT'])
+def update_category(cat_id):
+    try:
+        parent_cat_id = request.form.get("parent_category_id", "")
+        if cat_id == parent_cat_id:
+            return send_response(False, "parent id and cat id cannot be same")
+        if parent_cat_id != "" and not valid_cat_id(parent_cat_id):
+            pass
+        cat_name = request.form.get("category_name", "")
+        if not valid_cat_id(parent_cat_id):
+            return send_response(False, "Invalid parent Id")
+        if cat_name == "":
+            return send_response(False, "Category name is needed"), 500
+        if not valid_cat_id(cat_id):
+            return send_response(False, "Category id is invalid or not available to update"), 500
+        desc = request.form.get("description", "")
+        newvalues = {CategoryTable.category_name: cat_name, CategoryTable.parent_id: parent_cat_id,
+                     CategoryTable.desc: desc}
+        cat_collec.update_one({"_id": ObjectId(cat_id)}, {'$set': newvalues})
+        return send_response(True, "Category updated Successfully"), 200
+    except Exception as e:
+        return send_response(False, "Not interested in processing now"), 500
+

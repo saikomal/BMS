@@ -9,9 +9,9 @@ def category_exists(category_name, parent_id):
         {CategoryTable.category_name: category_name, CategoryTable.parent_id: parent_id}).count() > 0 else False
 
 
-def valid_parent_id(parent_id):
+def valid_cat_id(parent_id):
     return True if valid_object_id(parent_id) and bmsdb[CategoryTable.collec_name].find(
-        {"id": ObjectId(parent_id)}).count() == 1 else False
+        {"_id": ObjectId(parent_id)}).count() == 1 else False
 
 
 def valid_parent_for_category(category_name, parent_id):
