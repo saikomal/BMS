@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router, Route } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 
@@ -23,14 +23,16 @@ ReactDOM.render(
       store={createStore(reducers, composeEnchancers(applyMiddleware()))}
     >
       <Router history={history}>
-        <Header />
-        <div>
-          <Route path="/" exact component={App} />
-          <Route path="/admin" exact component={Admin} />
-          <Route path="/customers" exact component={Customers} />
-          <Route path="/analytics" exact component={Analytics} />
-          <Route path="/cart" exact component={Cart} />
-        </div>
+        <switch>
+          <Header />
+          <div>
+            <Route path="/" exact component={App} />
+            <Route path="/admin" component={Admin} />
+            <Route path="/customers" component={Customers} />
+            <Route path="/analytics" component={Analytics} />
+            <Route path="/cart" component={Cart} />
+          </div>
+        </switch>
       </Router>
     </Provider>
   </React.StrictMode>,
