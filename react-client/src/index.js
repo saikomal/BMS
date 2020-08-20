@@ -23,16 +23,16 @@ ReactDOM.render(
       store={createStore(reducers, composeEnchancers(applyMiddleware()))}
     >
       <Router history={history}>
-        <switch>
-          <Header />
-          <div>
-            <Route path="/" exact component={App} />
-            <Route path="/admin" component={Admin} />
-            <Route path="/customers" component={Customers} />
-            <Route path="/analytics" component={Analytics} />
-            <Route path="/cart" component={Cart} />
-          </div>
-        </switch>
+        {/* <Switch> */}
+        <Header />
+        <div>
+          <Route path="/" exact component={App} />
+          <Route path="/admin" component={Admin} />
+          <Route path="/customers" component={Customers} />
+          <Route path="/analytics" component={Analytics} />
+          <Route path="/cart" component={Cart} />
+        </div>
+        {/* </Switch> */}
       </Router>
     </Provider>
   </React.StrictMode>,

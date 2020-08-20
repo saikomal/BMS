@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { reduxForm, Field } from "redux-form";
+import { connect } from "react-redux";
+import { selectedAdminTab } from "../../actions/admin";
 
 const parentRef = React.createRef();
 const imageRef = React.createRef();
@@ -41,6 +43,10 @@ const postCompanyDetails = (data) => {
 };
 
 const CompanyDetailsForm = (props) => {
+  useEffect(() => {
+    props.selectedAdminTab("company");
+  }, ["updateStore"]);
+
   return (
     <form className="ui form" onSubmit={props.handleSubmit(postCompanyDetails)}>
       <Field
@@ -77,6 +83,8 @@ const CompanyDetailsForm = (props) => {
   );
 };
 
-export default reduxForm({
-  form: "companyDetails",
-})(CompanyDetailsForm);
+export default connect(null, { selectedAdminTab })(
+  reduxForm({
+    form: "companyDetails",
+  })(CompanyDetailsForm)
+);

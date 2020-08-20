@@ -4,5 +4,5 @@ import { selectedAdminTabReducer } from "./admin";
 
 export default combineReducers({
   form: reducer,
-  selectedAdminTab: selectedAdminTabReducer,
+  activeAdminTab: selectedAdminTabReducer,
 });

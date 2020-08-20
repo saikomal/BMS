@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import AdminHeader from "./AdminHeader";
 import CompanyDetailsForm from "./CompanyDetailsForm";
 import { Route, useRouteMatch, Switch } from "react-router-dom";
-import ManageCategories from "./ManageCategories";
+import ManageCategories from "./categories/ManageCategories";
 import ManageItems from "./ManageItems";
 
 const aaa = () => {
