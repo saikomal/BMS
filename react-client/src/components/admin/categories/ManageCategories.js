@@ -30,18 +30,59 @@ const data = [
 const ManageCategories = (props) => {
   const [showAddModal, setShowAddModalProp] = useState(false);
   const [parentCategory, setParentCatProp] = useState("");
+  const [breadCrumbList, setBreadCrumbList] = useState([]);
+
+  const showBreadCrumbs = () => {
+    const l = breadCrumbList.length;
+    if (l >= 1) {
+      return (
+        <div class="ui breadcrumb">
+          <a class="section">All</a>
+          <div class="divider"> / </div>
+          {_.transform(
+            breadCrumbList.slice(0, l - 1),
+            (res, name) => {
+              res.push(
+                <>
+                  <a class="section">{name}</a>
+                  <div class="divider"> / </div>
+                </>
+              );
+            },
+            []
+          )}
+          <a class="active section">{breadCrumbList[l - 1]}</a>
+        </div>
+      );
+    } else {
+      return (
+        <div class="ui breadcrumb">
+          <a class="section">All</a>
+        </div>
+      );
+    }
+  };
+
   useEffect(() => {
     props.selectedAdminTab("categories");
   }, ["updateStore"]);
 
   const renderCategories = () => {
+    console.log(parentCategory);
     return _.chain(data)
-      .takeRightWhile(function (o) {
+      .filter(function (o) {
         return o.parent == parentCategory;
       })
       .transform((result, o) => {
         result.push(
-          <div className="column" key={o.id}>
+          <div
+            className="column"
+            key={o.id}
+            onClick={() => {
+              setParentCatProp(o.name);
+              setBreadCrumbList([...breadCrumbList, o.name]);
+            }}
+          >
             <i class="folder icon huge" />{" "}
             <p style={{ marginLeft: 15 }}>{o.name}</p>
           </div>
@@ -51,6 +92,7 @@ const ManageCategories = (props) => {
   };
   return (
     <>
+      {showBreadCrumbs()}
       <div className="ui masthead container">
         <div class="ui right floated main menu">
           <a
