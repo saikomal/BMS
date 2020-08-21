@@ -3,6 +3,7 @@ import { selectedAdminTab } from "../../../actions/admin";
 import { connect } from "react-redux";
 import _ from "lodash";
 import AddCategory from "./AddCategory";
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 const data = [
   //sample data
   { id: 1, name: "Samsung", parent: "TV" },
@@ -31,20 +32,109 @@ const ManageCategories = (props) => {
   const [showAddModal, setShowAddModalProp] = useState(false);
   const [parentCategory, setParentCatProp] = useState("");
   const [breadCrumbList, setBreadCrumbList] = useState([]);
+  const returnContextMenu = () => {
+    return (
+      <ContextMenu className="menu" id="add_same_id">
+        <MenuItem
+          onClick={this.handleClick}
+          data={{ item: "Home" }}
+          className="menuItem"
+        >
+          Home
+        </MenuItem>
+        <MenuItem
+          onClick={this.handleClick}
+          data={{ item: "Post" }}
+          className="menuItem"
+        >
+          Post
+        </MenuItem>
+        <MenuItem
+          onClick={this.handleClick}
+          data={{ item: "Create Post" }}
+          className="menuItem"
+        >
+          Create Post
+        </MenuItem>
+        <MenuItem
+          onClick={this.handleClick}
+          data={{ item: "All Post" }}
+          className="menuItem"
+        >
+          All Post
+        </MenuItem>
+        <MenuItem
+          onClick={this.handleClick}
+          data={{ item: "Stats" }}
+          className="menuItem"
+        >
+          Stats
+        </MenuItem>
+        <MenuItem
+          onClick={this.handleClick}
+          data={{ item: "Chat" }}
+          className="menuItem"
+        >
+          Chat
+        </MenuItem>
+        <MenuItem
+          onClick={this.handleClick}
+          data={{ item: "Settings" }}
+          className="menuItem"
+        >
+          Settings
+        </MenuItem>
+        <MenuItem
+          onClick={this.handleClick}
+          data={{ item: "Profile" }}
+          className="menuItem"
+        >
+          Profile
+        </MenuItem>
+        <MenuItem
+          onClick={this.handleClick}
+          data={{ item: "Logout" }}
+          className="menuItem"
+        >
+          Logout
+        </MenuItem>
+      </ContextMenu>
+    );
+  };
 
   const showBreadCrumbs = () => {
     const l = breadCrumbList.length;
     if (l >= 1) {
       return (
         <div class="ui breadcrumb">
-          <a class="section">All</a>
+          <a
+            class="section"
+            onClick={() => {
+              setParentCatProp("");
+              setBreadCrumbList([]);
+            }}
+          >
+            All
+          </a>
           <div class="divider"> / </div>
           {_.transform(
             breadCrumbList.slice(0, l - 1),
             (res, name) => {
               res.push(
                 <>
-                  <a class="section">{name}</a>
+                  <a
+                    class="section"
+                    onClick={() => {
+                      setParentCatProp(name);
+                      setBreadCrumbList(
+                        _.takeWhile(breadCrumbList, function (catName) {
+                          return catName == name;
+                        })
+                      );
+                    }}
+                  >
+                    {name}
+                  </a>
                   <div class="divider"> / </div>
                 </>
               );
@@ -92,29 +182,41 @@ const ManageCategories = (props) => {
   };
   return (
     <>
-      {showBreadCrumbs()}
-      <div className="ui masthead container">
-        <div class="ui right floated main menu">
-          <a
-            class="music popup icon item"
-            data-content="Play Music"
-            onClick={() => setShowAddModalProp(true)}
-          >
-            <i class="plus square outline icon"></i>
-          </a>
+      <div className="ui internally celled grid">
+        <div className="row">
+          <div className="three wide column">Will decide what to show here</div>
+          <div className="ten wide column">
+            {showBreadCrumbs()}
+            <div className="ui container">
+              <div class="ui grid">
+                <div className="eight column row">{renderCategories()}</div>
+              </div>
+            </div>
+            {showAddModal && (
+              <AddCategory
+                closeModal={setShowAddModalProp}
+                parentCategory={parentCategory}
+              />
+            )}
+          </div>
+          <div className="three wide column">
+            <button
+              className="ui button primary"
+              onClick={() => setShowAddModalProp(true)}
+            >
+              Add Category
+            </button>
+            <br />
+            <br />
+            <button
+              className="ui button primary"
+              onClick={() => setShowAddModalProp(true)}
+            >
+              Add Item
+            </button>
+          </div>
         </div>
       </div>
-      <div className="ui container">
-        <div class="ui grid">
-          <div className="eight column row">{renderCategories()}</div>
-        </div>
-      </div>
-      {showAddModal && (
-        <AddCategory
-          closeModal={setShowAddModalProp}
-          parentCategory={parentCategory}
-        />
-      )}
     </>
   );
 };

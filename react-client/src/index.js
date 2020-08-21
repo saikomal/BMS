@@ -6,9 +6,9 @@ import { createStore, applyMiddleware, compose } from "redux";
 
 import App from "./components/App";
 import Header from "./components/Header";
-import Customers from "./components/Customers";
+import Customers from "./components/customer/Customers";
 import Admin from "./components/admin/Admin";
-import Analytics from "./components/Analytics";
+import Analytics from "./components/analytics/Analytics";
 import Cart from "./components/Cart";
 
 import history from "./history";
