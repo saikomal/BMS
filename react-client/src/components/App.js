@@ -1,30 +1,12 @@
 import React from "react";
+import LeftMenu from "./Home/LeftMenu";
 
 const App = () => {
   return (
     <div className="ui internally celled grid">
       <div className="row">
         <div className="three wide column">
-          <div className="ui vertical menu">
-            <a className="active teal item">
-              Inbox
-              <div className="ui teal left pointing label">1</div>
-            </a>
-            <a className="item">
-              Spam
-              <div className="ui label">51</div>
-            </a>
-            <a className="item">
-              Updates
-              <div className="ui label">1</div>
-            </a>
-            <div className="item">
-              <div className="ui transparent icon input">
-                <input type="text" placeholder="Search mail..." />
-                <i className="search icon" />
-              </div>
-            </div>
-          </div>
+          <LeftMenu />
         </div>
         <div className="ten wide column">
           <div className="ui card">

@@ -201,7 +201,6 @@ const ManageCategories = (props) => {
 };
 
 const mapStateTOProps = (state) => {
-  console.log(state);
   return { catagories: state.allCategories };
 };
 
